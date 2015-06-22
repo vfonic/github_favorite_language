@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+require 'github_favorite_language'
+
+if ARGV.empty? && $stdin.tty?
+  GithubFavoriteLanguage.print_usage
+else
+  username = ARGV.first || STDIN.read
+  GithubFavoriteLanguage.get_favorite_language(username: username)
+end
