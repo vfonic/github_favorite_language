@@ -12,6 +12,6 @@ class GithubFavoriteLanguage
   end
 
   def self.print_usage
-    puts "Usage"
+    puts File.read('USAGE')
   end
 end

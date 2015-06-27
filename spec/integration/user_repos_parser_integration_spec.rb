@@ -5,4 +5,9 @@ describe UserReposParser do
     parser = UserReposParser.new(json: File.read('spec/data/users_username_repos.json'))
     expect(parser.repos).to include "assembly-tools"
   end
+
+  it "returns an empty array when user has no repos" do
+    parser = UserReposParser.new(json: File.read('spec/data/users_username_repos_empty.json'))
+    expect(parser.repos).to be_empty
+  end
 end
