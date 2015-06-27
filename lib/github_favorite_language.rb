@@ -1,12 +1,13 @@
-require 'github_favorite_language/version'
-
 class GithubFavoriteLanguage
-  def self.get_favorite_language(username:)
-    username.strip!
-    if !username.empty?
-      puts username
+  def initialize(username:)
+    @username = username.strip
+  end
+
+  def favorite_language
+    if !@username.empty?
+      puts @username
     else
-      self.print_usage
+      GithubFavoriteLanguage.print_usage
     end
   end
 
