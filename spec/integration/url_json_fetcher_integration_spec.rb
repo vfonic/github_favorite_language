@@ -1,7 +1,7 @@
 require 'url_json_fetcher'
 
 describe "integrated url_json_fetcher" do
-  let(:subject) { UrlJsonFetcher.new }
+  let(:subject) { UrlJsonFetcher }
   let(:url_string) { "https://stub.github.com/" }
   let(:page2_url) { "https://stub2.github.com/?page=2"}
   let(:response) {

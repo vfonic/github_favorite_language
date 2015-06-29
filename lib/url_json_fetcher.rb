@@ -1,4 +1,5 @@
-require 'open-uri'
+# use OpenURI with caution:
+# http://sakurity.com/blog/2015/02/28/openuri.htmlrequire 'open-uri'
 require 'json'
 
 class UrlJsonFetcher
@@ -9,7 +10,7 @@ class UrlJsonFetcher
   #   <https://api.github.com/search/code?q=addClass+user%3Amozilla&page=34>; rel="last"
   #
   # Returns JSON parsed response body
-  def fetch_all_pages(url:)
+  def self.fetch_all_pages(url:)
     headers, body = fetch_page(url: url)
 
     resources = JSON.parse(body)
@@ -26,7 +27,7 @@ class UrlJsonFetcher
     # Fetches a single page for the given url.
     #
     # Returns a header, body pair of response
-    def fetch_page(url:)
+    def self.fetch_page(url:)
       res = open(URI(url))
       [res.meta, res.read]
     end
@@ -34,7 +35,7 @@ class UrlJsonFetcher
     # Finds next page from 'Link' response header
     #
     # Returns a url of next page
-    def next_page(headers:)
+    def self.next_page(headers:)
       link = (headers["Link"] || "").split(', ').map do |link|
         href, name = link.match(/<(.*?)>; rel="(\w+)"/).captures
         return href if name == 'next'
