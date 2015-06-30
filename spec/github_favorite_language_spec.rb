@@ -6,9 +6,9 @@ describe GithubFavoriteLanguage do
   end
 
   describe ".favorite_language" do
-    it "should print usage with whitespace username" do
-      expect(GithubFavoriteLanguage).to receive(:print_usage)
-      GithubFavoriteLanguage.new(username: ' ').favorite_language
+    it "should raise UsernameWhitespaceOrEmpty with whitespace or empty username" do
+      expect{ GithubFavoriteLanguage.new(username: ' ').favorite_language }
+        .to raise_error UsernameWhitespaceOrEmpty
     end
 
     it "should call GithubAPI.repos for username" do

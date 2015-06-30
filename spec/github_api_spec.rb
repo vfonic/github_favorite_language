@@ -13,7 +13,7 @@ describe GithubAPI do
 
     it "should call url_json_fetcher" do
       expect(UrlJsonFetcher).to receive(:fetch_all_pages).with(
-        url: GithubAPI::GITHUB_API_URL + "/users/#{user}/repos?per_page=1000")
+        url: GithubAPI::GITHUB_API_URL + "/users/#{user}/repos")
       subject.repos(user: user)
     end
 

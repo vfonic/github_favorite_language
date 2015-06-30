@@ -6,6 +6,7 @@ require 'json'
 class UrlJsonFetcher
   # Fetches all pages for the given url.
   # Information about pagination is provided in the Link header of an API call.
+  # http://tools.ietf.org/html/rfc5988
   # Example:
   # Link: <https://api.github.com/search/code?q=addClass+user%3Amozilla&page=2>; rel="next"
   #   <https://api.github.com/search/code?q=addClass+user%3Amozilla&page=34>; rel="last"
