@@ -12,9 +12,9 @@ describe "integration github_api" do
       )}
   end
 
-  it "should create resources from fetched repos" do
+  it "should return fetched repos" do
     repos = subject.repos(user: user)
-    expect(repos[0]).to be_kind_of(Resource)
-    expect(repos[0]).to respond_to(:name)
+    expect(repos).to be_kind_of(Array)
+    expect(repos[0]).to be_kind_of(Hash)
   end
 end
