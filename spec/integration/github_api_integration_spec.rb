@@ -5,7 +5,6 @@ describe "integration github_api" do
   let(:user) { 'vfonic' }
 
   before do
-    url_json_fetcher = 
     allow(UrlJsonFetcher).to receive(:open) {
       double('response',
         meta: '',

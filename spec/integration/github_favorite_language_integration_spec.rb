@@ -1,10 +1,17 @@
 require 'github_favorite_language'
 
 describe "integrated github_favorite_language" do
-  it "outputs user's favorite language" do
-    skip
+  before do
+    allow(UrlJsonFetcher).to receive(:open) {
+      double('response',
+        meta: '',
+        read: File.read('spec/data/users_username_repos.json')
+      )}
+  end
 
+  it "outputs user's favorite language" do
     gh_fav_lang = GithubFavoriteLanguage.new(username: 'mariokostelac')
-    expect(gh_fav_lang.favorite_language).to eq 'C++'
+    fav_language = gh_fav_lang.favorite_language
+    expect(fav_language).to eq 'C++'
   end
 end

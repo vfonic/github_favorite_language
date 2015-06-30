@@ -1,5 +1,6 @@
 # use OpenURI with caution:
 # http://sakurity.com/blog/2015/02/28/openuri.htmlrequire 'open-uri'
+require 'open-uri'
 require 'json'
 
 class UrlJsonFetcher
