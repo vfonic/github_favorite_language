@@ -12,14 +12,22 @@ class GithubFavoriteLanguage
 
     languages = Hash.new(0)
     repos.map do |repo|
-      languages[repo.language] += repo.size if repo.language?
+      languages[repo["language"]] += repo["size"] unless repo["language"].nil? || repo["language"].empty?
     end
-    languages.max_by { |lang, size| size }.first
+    
+    languages.max_by { |lang, size| size }.first unless languages.empty?
   end
 
   def print_favorite_language(language:nil)
-    language = favorite_language if language.nil? || language.empty?
-    puts "#{@username}'s favorite language is: #{language}"
+    language = favorite_language if language.nil?
+
+    unless language.nil?
+      puts "#{@username}'s favorite language is: #{language}"
+    else
+      puts "Couldn't determine #{@username}'s favorite language."
+      puts "Chack if #{@username} has public repos with code."
+      puts "Check the username is correct."
+    end
   end
 
   def self.print_usage

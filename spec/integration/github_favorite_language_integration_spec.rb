@@ -12,6 +12,6 @@ describe "integrated github_favorite_language" do
   it "outputs user's favorite language" do
     gh_fav_lang = GithubFavoriteLanguage.new(username: 'mariokostelac')
     fav_language = gh_fav_lang.favorite_language
-    expect(fav_language).to eq 'C++'
+    expect(fav_language).to eq 'Go'
   end
 end
