@@ -2,7 +2,7 @@ require 'github_api'
 
 describe "integration github_api" do
   let(:subject) { GithubAPI.new }
-  let(:user) { 'vfonic' }
+  let(:user) { 'mariokostelac' }
 
   before do
     allow(JsonApiClient).to receive(:open) {

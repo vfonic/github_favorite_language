@@ -5,5 +5,6 @@ class GithubAPI
 
   def repos(user:)
     repos = JsonApiClient.fetch_all_pages(url: GITHUB_API_URL + "/users/#{user}/repos")
+    repos.select{ |repo| repo["owner"]["login"] == user } unless repos.nil?
   end 
 end
