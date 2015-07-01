@@ -92,10 +92,8 @@ describe GithubFavoriteLanguage do
   end
 
   describe ".print_usage" do
-    it "should print the usage from USAGE file" do
-      usage_string = "usage text"
-      expect(File).to receive(:read).and_return(usage_string)
-      expect(STDOUT).to receive(:puts).with(usage_string)
+    it "should print the usage" do
+      expect(STDOUT).to receive(:puts).with(/Usage/)
       GithubFavoriteLanguage.print_usage
     end
   end

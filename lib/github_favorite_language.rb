@@ -39,7 +39,7 @@ class GithubFavoriteLanguage
 Description:
   Find out any GitHub user's favorite programming language
 
-Example:
+Usage:
   github_favorite_language vfonic
 
   This will fetch vfonic user repos and return the name of the language
