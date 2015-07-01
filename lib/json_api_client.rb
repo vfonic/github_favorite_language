@@ -3,7 +3,7 @@
 require 'open-uri'
 require 'json'
 
-class UrlJsonFetcher
+module JsonApiClient
   # Fetches all pages for the given url.
   # Information about pagination is provided in the Link header of an API call.
   # http://tools.ietf.org/html/rfc5988
@@ -12,8 +12,10 @@ class UrlJsonFetcher
   #   <https://api.github.com/search/code?q=addClass+user%3Amozilla&page=34>; rel="last"
   #
   # Returns JSON parsed response body
-  def self.fetch_all_pages(url:)
+  def JsonApiClient.fetch_all_pages(url:)
     headers, body = fetch_page(url: url)
+
+    return nil if headers.nil? || body.nil?
 
     resources = JSON.parse(body)
     while url = next_page(headers: headers) do
@@ -37,7 +39,7 @@ class UrlJsonFetcher
     # Finds next page from 'Link' response header
     #
     # Returns a url of next page
-    def self.next_page(headers:)
+    def JsonApiClient.next_page(headers:)
       link = (headers["Link"] || "").split(', ').map do |link|
         href, name = link.match(/<(.*?)>; rel="(\w+)"/).captures
         return href if name == 'next'

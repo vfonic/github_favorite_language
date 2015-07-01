@@ -5,7 +5,7 @@ describe "integration github_api" do
   let(:user) { 'vfonic' }
 
   before do
-    allow(UrlJsonFetcher).to receive(:open) {
+    allow(JsonApiClient).to receive(:open) {
       double('response',
         meta: '',
         read: File.read('spec/data/users_username_repos.json')

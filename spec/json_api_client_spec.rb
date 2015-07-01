@@ -1,10 +1,10 @@
 require 'json_api_client'
 
-describe UrlJsonFetcher do
+describe JsonApiClient do
   describe "#fetch_all_pages" do
     let(:url_string) { "https://github.com" }
     let(:response) { double('response', meta: '', read: '{ "Python": 556 }') }
-    let(:subject) { UrlJsonFetcher }
+    let(:subject) { JsonApiClient }
 
     before do
       allow(subject).to receive(:open).and_return(response)
