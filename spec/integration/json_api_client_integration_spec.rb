@@ -4,8 +4,7 @@ describe "integrated json_api_client" do
   let(:subject) { JsonApiClient }
   let(:url_string) { "https://stub.github.com/" }
   let(:page2_url) { "https://stub2.github.com/?page=2"}
-  let(:response) {
-    double('response',
+  let(:response) { double('response',
       meta: '',
       read: File.read('spec/data/users_username_repos.json')
   )}

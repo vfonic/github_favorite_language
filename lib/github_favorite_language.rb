@@ -18,20 +18,34 @@ class GithubFavoriteLanguage
     languages.max_by { |lang, size| size }.first unless languages.empty?
   end
 
-  def print_favorite_language(language:nil)
-    language = favorite_language if language.nil?
+  def print_favorite_language
+    begin
+      language = favorite_language if language.nil?
 
-    unless language.nil?
-      puts "#{@username}'s favorite language is: #{language}"
-    else
-      puts "Couldn't determine #{@username}'s favorite language."
-      puts "Check if #{@username} has public repos with code in them."
+      unless language.nil?
+        puts "#{@username}'s favorite language is: #{language}"
+      else
+        print_no_public_repos
+      end
+    rescue JsonApiClient::NotFound
+      print_username_not_found
     end
   end
 
   def self.print_usage
     puts File.read('USAGE')
   end
+
+  private
+
+    def print_no_public_repos
+      puts "Couldn't determine #{@username}'s favorite language."
+      puts "Check if #{@username} has public repos with code in them."
+    end
+
+    def print_username_not_found
+      puts "User #{@username} not found. Check the username is correct."
+    end
 end
 
 class UsernameWhitespaceOrEmpty < StandardError; end
