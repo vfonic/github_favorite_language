@@ -35,7 +35,17 @@ class GithubFavoriteLanguage
   end
 
   def self.print_usage
-    puts File.read('USAGE')
+    puts %Q(
+Description:
+  Find out any GitHub user's favorite programming language
+
+Example:
+  github_favorite_language vfonic
+
+  This will fetch vfonic user repos and return the name of the language
+  with most bytes of code written.
+  For GitHub documentation refer to: https://developer.github.com/v3/
+    )
   end
 
   private
