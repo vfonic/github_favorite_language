@@ -23,12 +23,14 @@ class GithubFavoriteLanguage
       language = favorite_language if language.nil?
 
       unless language.nil?
-        puts "#{@username}'s favorite language is: #{language}"
+        print_message(message: "#{@username}'s favorite language is: #{language}")
       else
         print_no_public_repos
       end
     rescue JsonApiClient::NotFound
       print_username_not_found
+    rescue JsonApiClient::Error, JsonApiClient::RateLimitExceeded => e
+      print_message(message: e.message)
     end
   end
 
@@ -37,6 +39,10 @@ class GithubFavoriteLanguage
   end
 
   private
+
+    def print_message(message:)
+      puts message
+    end
 
     def print_no_public_repos
       puts "Couldn't determine #{@username}'s favorite language."

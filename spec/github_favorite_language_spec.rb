@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'helpers/repos_helper'
 
 describe GithubFavoriteLanguage do
   it "has a version number" do
@@ -68,9 +69,24 @@ describe GithubFavoriteLanguage do
       subject.print_favorite_language
     end
 
-    it "should print username not found when json_api_client throws JsonApiClient::NotFound" do
+    it "should print username not found when json_api_client raises JsonApiClient::NotFound" do
       allow(github_api).to receive(:repos).and_raise JsonApiClient::NotFound.new(headers:nil, message:nil)
       expect(STDOUT).to receive(:puts).with("User #{username} not found. Check the username is correct.")
+      subject.print_favorite_language
+    end
+
+    it "should print error message when json_api_client raises RateLimitExceeded" do
+      message = 'error message to print'
+      allow(github_api).to receive(:repos).and_raise JsonApiClient::RateLimitExceeded.new(headers:nil, message:message)
+      expect(STDOUT).to receive(:puts).with(message)
+      subject.print_favorite_language
+    end
+
+    # TODO consider putting in shared example?
+    it "should print error message when json_api_client raises Error" do
+      message = 'error message to print'
+      allow(github_api).to receive(:repos).and_raise JsonApiClient::Error.new(headers:nil, message:message)
+      expect(STDOUT).to receive(:puts).with(message)
       subject.print_favorite_language
     end
   end
@@ -82,12 +98,5 @@ describe GithubFavoriteLanguage do
       expect(STDOUT).to receive(:puts).with(usage_string)
       GithubFavoriteLanguage.print_usage
     end
-  end
-end
-
-def stub_repo(hash)
-  repo = double('repo')
-  hash.each do |k,v|
-    allow(repo).to receive(:[]).with(k).and_return(v)
   end
 end

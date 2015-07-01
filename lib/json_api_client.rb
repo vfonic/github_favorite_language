@@ -56,15 +56,15 @@ module JsonApiClient
                             headers["x-ratelimit-remaining"] ||
                             headers["x-rate-limit-remaining"]
       
-      if ratelimit_remaining == 0
+      if ratelimit_remaining.to_i == 0
         ratelimit_reset = headers["x-ratelimit-reset"] ||
                           headers["x-rate-limit-reset"] ||
                           headers["x-ratelimit-userreset"]
+        message = 'Rate limit exceeded.'
+
         if ratelimit_reset
           ratelimit_reset_time = Time.at(ratelimit_reset.to_i)
-          message = "Try again after #{ratelimit_reset_time}"
-        else
-          message = 'Rate Limit Exceeded'
+          message += " Try again after #{ratelimit_reset_time}."
         end
         api_error = JsonApiClient::RateLimitExceeded.new(headers: headers,
                                                          message: message)

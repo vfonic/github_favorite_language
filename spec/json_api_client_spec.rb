@@ -50,21 +50,21 @@ describe JsonApiClient do
         
         expect{ subject.fetch_all_pages(url: url_string) }.to raise_error{ |error|
           expect(error).to be_a(JsonApiClient::RateLimitExceeded)
-          expect(error.message).to eq 'Rate Limit Exceeded'
+          expect(error.message).to eq 'Rate limit exceeded.'
         }
       end
 
       it "should raise JsonApiClient::RateLimitExceeded with correct message on 403 Forbidden with x-ratelimit-remaining and x-ratelimit-reset" do
         time = Time.now
         openuri_error = OpenURI::HTTPError.new('403 Forbidden', double('io', meta: {
-          "x-rate-limit-remaining" => 0,
-          "x-ratelimit-userreset" => time.to_i
+          "x-rate-limit-remaining" => "0",
+          "x-ratelimit-userreset" => time.to_i.to_s
         }) )
         allow(subject).to receive(:open).and_raise openuri_error
 
         expect{ subject.fetch_all_pages(url: url_string) }.to raise_error{ |error|
           expect(error).to be_a(JsonApiClient::RateLimitExceeded)
-          expect(error.message).to eq "Try again after #{time}"
+          expect(error.message).to eq "Rate limit exceeded. Try again after #{time}."
         }
       end
     end
