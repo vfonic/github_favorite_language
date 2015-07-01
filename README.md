@@ -1,5 +1,6 @@
 # Github Favorite Language
 
+[![Gem Version](https://badge.fury.io/rb/github_favorite_language.svg)](http://badge.fury.io/rb/github_favorite_language)
 [![Build Status](https://travis-ci.org/vfonic/github_favorite_language.svg)](https://travis-ci.org/vfonic/github_favorite_language)
 [![Dependency Status](https://gemnasium.com/vfonic/github_favorite_language.svg)](https://gemnasium.com/vfonic/github_favorite_language)
 [![Coverage Status](https://coveralls.io/repos/vfonic/github_favorite_language/badge.svg)](https://coveralls.io/r/vfonic/github_favorite_language)
