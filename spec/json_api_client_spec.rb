@@ -1,4 +1,4 @@
-require 'url_json_fetcher'
+require 'json_api_client'
 
 describe UrlJsonFetcher do
   describe "#fetch_all_pages" do

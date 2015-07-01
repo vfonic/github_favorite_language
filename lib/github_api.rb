@@ -1,4 +1,4 @@
-require 'url_json_fetcher'
+require 'json_api_client'
 
 class GithubAPI
   GITHUB_API_URL = 'https://api.github.com'.freeze

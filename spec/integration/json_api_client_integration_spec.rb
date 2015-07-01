@@ -1,4 +1,4 @@
-require 'url_json_fetcher'
+require 'json_api_client'
 
 describe "integrated url_json_fetcher" do
   let(:subject) { UrlJsonFetcher }
