@@ -35,7 +35,7 @@ The gem comes with the command line tool, but can be also called inside the ruby
 
 Example:
 
-Bash:
+Bash or Windows Command prompt:
 
 ```bash
     $ github_favorite_language vfonic
