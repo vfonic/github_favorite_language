@@ -25,8 +25,7 @@ class GithubFavoriteLanguage
       puts "#{@username}'s favorite language is: #{language}"
     else
       puts "Couldn't determine #{@username}'s favorite language."
-      puts "Chack if #{@username} has public repos with code."
-      puts "Check the username is correct."
+      puts "Check if #{@username} has public repos with code in them."
     end
   end
 

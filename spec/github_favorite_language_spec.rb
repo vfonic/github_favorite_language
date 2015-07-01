@@ -57,8 +57,7 @@ describe GithubFavoriteLanguage do
     it "should print a message when language can not be determined" do
       allow(subject).to receive(:favorite_language)
       expect(STDOUT).to receive(:puts).with("Couldn't determine #{username}'s favorite language.")
-      expect(STDOUT).to receive(:puts).with("Chack if #{username} has public repos with code.")
-      expect(STDOUT).to receive(:puts).with("Check the username is correct.")
+      expect(STDOUT).to receive(:puts).with("Check if #{username} has public repos with code in them.")
       subject.print_favorite_language
     end
   end
