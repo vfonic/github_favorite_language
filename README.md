@@ -1,39 +1,65 @@
-# GithubFavoriteLanguage
+# Github Favorite Language
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/github_favorite_language`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Find out any GitHub user's favorite programming language!
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'github_favorite_language'
+  gem 'github_favorite_language'
 ```
 
 And then execute:
 
-    $ bundle
+```bash
+  $ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install github_favorite_language
+```bash
+  $ gem install github_favorite_language
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+The gem comes with the command line tool, but can be also called inside the ruby code.
+
+
+Example:
+
+Bash:
+
+```bash
+    $ github_favorite_language vfonic
+```
+
+Ruby:
+
+```ruby
+  require 'github_favorite_language'
+
+  puts GithubFavoriteLanguage.new(username: 'vfonic').favorite_language
+```
+
+Or:
+
+```ruby
+  require 'github_favorite_language'
+
+  GithubFavoriteLanguage.new(username: 'vfonic').print_favorite_language
+```
+
+This will fetch vfonic repos and return the name of the main language of most repositories.
+For GitHub documentation refer to: [https://developer.github.com/v3/](https://developer.github.com/v3/)
+
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/github_favorite_language. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
-
+To install this gem onto your local machine, run `bundle exec rake install`. To fix an issue, update the version number in `version.rb`, and then create a pull request.
 
 ## License
 
