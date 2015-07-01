@@ -1,4 +1,4 @@
-require 'github_favorite_language'
+require 'spec_helper'
 
 describe GithubFavoriteLanguage do
   it "has a version number" do
