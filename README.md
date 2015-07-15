@@ -5,6 +5,8 @@
 [![Dependency Status](https://gemnasium.com/vfonic/github_favorite_language.svg)](https://gemnasium.com/vfonic/github_favorite_language)
 [![Coverage Status](https://coveralls.io/repos/vfonic/github_favorite_language/badge.svg)](https://coveralls.io/r/vfonic/github_favorite_language)
 [![Code Climate](https://codeclimate.com/github/vfonic/github_favorite_language/badges/gpa.svg)](https://codeclimate.com/github/vfonic/github_favorite_language)
+[![Inline docs](http://inch-ci.org/github/vfonic/github_favorite_language.svg?branch=master)](http://inch-ci.org/github/vfonic/github_favorite_language)
+[![security](https://hakiri.io/github/vfonic/github_favorite_language/master.svg)](https://hakiri.io/github/vfonic/github_favorite_language/master)
 
 Find out any GitHub user's favorite programming language!
 
